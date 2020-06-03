@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% block title %} Deployment {% endblock %} {% block
+head %}
+<script src="{{ url_for('static', filename='index.js')  }}"></script>
+
+<script></script>
+{% endblock %} {% block body %}
+
+<div class="d-flex justify-content-center" id="display-content">
+    <div class="row text-center">
+        <form
+            class="mt-4"
+            action="{{ url_for('predict') }}"
+            enctype="multipart/form-data"
+            method="post"
+        >
+            <div class="">
+                <img
+                    src="{{ url_for('static', filename='Camera.svg') }}"
+                    class="img-fluid"
+                    id="placeholder-img"
+                    alt="placeholder"
+                />
+            </div>
+            <div class="mb-4">
+                <canvas id="my-canvas" width="0" height="0"></canvas>
+            </div>
+            <div class="text-center">
+                <input id="input-img" name="input-img" type="file" />
+            </div>
+            <button type="button" id="submit-btn" class="btn btn-success">
+                Predict
+            </button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
