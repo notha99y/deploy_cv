@@ -9,7 +9,6 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-
     return render_template("index.html")
 
 
@@ -18,6 +17,8 @@ def predict():
     try:
         input_img = request.files["input-img"]
         img = Image.open(input_img.stream)
+        if img.mode != 'RGB':
+            img = img.convert('RGB')
         print(img.size)
         detected_classes, confidences, bboxes = detect(img, model, transform)
         detections_info = []
