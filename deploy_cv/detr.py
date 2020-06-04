@@ -3,8 +3,11 @@ import torchvision.transforms as T
 
 torch.set_grad_enabled(False)
 
+device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+
 model = torch.hub.load('facebookresearch/detr', 'detr_resnet101', pretrained=True)
 model.eval()
+model = model.to(device)
 
 # COCO classes
 CLASSES = [
@@ -47,7 +50,7 @@ def detect(im, model, transform):
     with torch.no_grad():
         # mean-std normalize the input image (batch-size: 1)
         img = transform(im).unsqueeze(0)
-
+        img = img.to(device)
         # propagate through the model
         outputs = model(img)
 
