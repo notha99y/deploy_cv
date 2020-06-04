@@ -11,3 +11,4 @@ dependencies:
     - cudatoolkit=10.1
     - flask
     - scipy
+    - gunicorn
