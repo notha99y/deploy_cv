@@ -5,7 +5,7 @@ torch.set_grad_enabled(False)
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 
-model = torch.hub.load('facebookresearch/detr', 'detr_resnet101', pretrained=True)
+model = torch.hub.load('facebookresearch/detr', 'detr_resnet50', pretrained=True)
 model.eval()
 model = model.to(device)
 
