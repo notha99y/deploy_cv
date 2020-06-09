@@ -1,3 +1,4 @@
+import os
 import numpy as np
 from flask import Flask, jsonify, render_template, request
 from PIL import Image
@@ -10,6 +11,10 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     return render_template("index.html")
+
+@app.route("/video")
+def video():
+    return render_template("video.html")
 
 
 @app.route("/predict", methods=["POST"])
@@ -43,4 +48,5 @@ def predict():
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port="5001")
+    port = int(os.environ.get('PORT', 5001))
+    app.run(host="0.0.0.0", port=port, debug=True)

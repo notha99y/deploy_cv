@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% block title %} Deployment {% endblock %} {% block
 head %}
-<script src="{{ url_for('static', filename='index.js')  }}"></script>
+<script src="{{ url_for('static', filename='video.js')  }}"></script>
 <script src="{{ url_for('static', filename='colorPalette.js') }}"></script>
 {% endblock %} {% block body %}
 
@@ -14,17 +14,25 @@ head %}
         >
             <div class="">
                 <img
-                    src="{{ url_for('static', filename='Camera.svg') }}"
+                    src="{{ url_for('static', filename='Video.svg') }}"
                     class="img-fluid"
                     id="placeholder-img"
                     alt="placeholder"
                 />
             </div>
+            <video id='display-vid' controls width="0" height="0">
+                <source type="video/mp4">
+            </video>
             <div class="mb-4">
                 <canvas id="my-canvas" width="0" height="0"></canvas>
             </div>
             <div class="text-center">
-                <input id="input-img" name="input-img" type="file" accept="image/*"/>
+                <input
+                    id="input-vid"
+                    name="input-vid"
+                    type="file"
+                    accept="video/mp4,video/x-m4v,video/*"
+                />
             </div>
             <button type="button" id="submit-btn" class="btn btn-success">
                 Predict
