@@ -29,15 +29,15 @@ RUN pip3 install --no-cache Flask \
     torchvision==0.6  \
     Werkzeug
 
-EXPOSE 5001
-
-ENV HOME /root/
+ENV HOME /deploy_cv/ 
 
 COPY thub_checkpoints $HOME/.cache/torch/hub/checkpoints 
 
 SHELL ["/bin/bash", "-c"]
 
 CMD ["gunicorn", "app:app", "-b", "0.0.0.0:5001"]
+
+# CMD  gunicorn app:app --bind 0.0.0.0:$PORT
 
 # Run the app.  CMD is required to run on Heroku
 # $PORT is set by Heroku
