@@ -3,12 +3,17 @@ channels:
     - default
     - pytorch
     - anaconda
+    - conda-forge
 dependencies:
     - python=3.8
     - pip
     - pytorch
     - torchvision
-    - cudatoolkit=10.1
+    - cuda100
+    - cudnn
     - flask
     - scipy
     - gunicorn
+    - opencv
+    - seaborn
+    - tqdm

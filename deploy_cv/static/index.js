@@ -53,7 +53,7 @@ function GetPrediction() {
     const request = new XMLHttpRequest();
     const form = $("form")[0];
     const sendData = new FormData(form);
-    request.open("POST", "/predict");
+    request.open("POST", "/image/predict");
     request.send(sendData);
     request.onload = () => {
         const receivedData = JSON.parse(request.responseText);
